@@ -7,7 +7,7 @@ public class Jewel {
 
     public int numJewelsInStones(String jewels, String stones) {
         int numJewels = 0;
-        String regex = "[A-Za_z]";
+        String regex = "[A-Za-z]";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcherJewels = pattern.matcher(jewels);
         Matcher matcherStones = pattern.matcher(stones);
@@ -20,7 +20,6 @@ public class Jewel {
                         numJewels++;
                     }
                 }
-
             }
         }
         return numJewels;
