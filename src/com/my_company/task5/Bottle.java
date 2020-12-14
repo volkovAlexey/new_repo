@@ -1,15 +1,15 @@
 package com.my_company.task5;
 
 public class Bottle {
-    private int volume;
+    private double volume;
     private Liquid liquid;
 
-    Bottle(int volume, Liquid liquid) {
+    Bottle(double volume, Liquid liquid) {
         this.volume = volume;
         this.liquid = liquid;
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return volume;
     }
 
