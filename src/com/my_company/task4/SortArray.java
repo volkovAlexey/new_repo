@@ -3,7 +3,7 @@ package com.my_company.task4;
 public class SortArray {
 
     public int[] sortSquareArray(int[] arr) {
-        int[] sqrArr = square(arr);
+        int[] sqrArr = squareArray(arr);
         for (int i = sqrArr.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (sqrArr[j] > sqrArr[j + 1]) {
@@ -16,7 +16,7 @@ public class SortArray {
         return sqrArr;
     }
 
-    private int[] square(int[] arr) {
+    private int[] squareArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] *= arr[i];
         }
