@@ -11,7 +11,7 @@ public class Jewel {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcherJewels = pattern.matcher(jewels);
         Matcher matcherStones = pattern.matcher(stones);
-        if (matcherJewels.find() && matcherStones.find()) {
+        if (matcherJewels.matches() && matcherStones.matches()) {
             char[] charsJewels = jewels.toCharArray();
             char[] charsStones = stones.toCharArray();
             for (char charJewel : charsJewels) {

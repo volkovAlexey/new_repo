@@ -17,9 +17,10 @@ public class SortArray {
     }
 
     private int[] squareArray(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] *= arr[i];
+        int[] sqrArr = arr;
+        for (int i = 0; i < sqrArr.length; i++) {
+            sqrArr[i] *= sqrArr[i];
         }
-        return arr;
+        return sqrArr;
     }
 }
