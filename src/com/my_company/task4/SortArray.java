@@ -2,16 +2,24 @@ package com.my_company.task4;
 
 public class SortArray {
 
-    public void bubbleSort(int[] arr) {
-        for (int i = arr.length - 1; i > 0; i--) {
+    public int[] sortSquareArray(int[] arr) {
+        int[] sqrArr = square(arr);
+        for (int i = sqrArr.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int tmp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = tmp;
+                if (sqrArr[j] > sqrArr[j + 1]) {
+                    int tmp = sqrArr[j];
+                    sqrArr[j] = sqrArr[j + 1];
+                    sqrArr[j + 1] = tmp;
                 }
             }
         }
+        return sqrArr;
     }
 
+    private int[] square(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] *= arr[i];
+        }
+        return arr;
+    }
 }
