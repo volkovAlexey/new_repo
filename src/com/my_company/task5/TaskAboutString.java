@@ -28,11 +28,22 @@ public class TaskAboutString {
     }
 
     public String swapString(String s) {
+        int middleIndex = s.length() / 2;
+        int size = s.length();
+        StringBuilder stringBuilder = new StringBuilder(s);
         if (s.length() % 2 == 0) {
-//            s.replace();
-        }else {
-
+            swap(stringBuilder, middleIndex, size);
+        } else {
+            stringBuilder.deleteCharAt(middleIndex);
+            swap(stringBuilder, middleIndex, size - 1);
+            stringBuilder.insert(middleIndex, s.charAt(middleIndex));
         }
-        return new String();
+        return new String(stringBuilder);
+    }
+
+    private StringBuilder swap(StringBuilder sb, int middleIndex, int size) {
+        sb.insert(0, sb.substring(middleIndex, size));
+        sb.setLength(size);
+        return sb;
     }
 }
