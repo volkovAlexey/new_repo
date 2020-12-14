@@ -26,4 +26,13 @@ public class TaskAboutString {
         }
         return new String(chars);
     }
+
+    public String swapString(String s) {
+        if (s.length() % 2 == 0) {
+//            s.replace();
+        }else {
+
+        }
+        return new String();
+    }
 }
