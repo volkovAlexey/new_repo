@@ -13,4 +13,17 @@ public class TaskAboutString {
         }
         return s1;
     }
+
+    public String invertCase(String s) {
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (Character.isLowerCase(c)) {
+                chars[i] = Character.toUpperCase(c);
+            } else {
+                chars[i] = Character.toLowerCase(c);
+            }
+        }
+        return new String(chars);
+    }
 }
