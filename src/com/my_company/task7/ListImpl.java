@@ -8,27 +8,30 @@ public class ListImpl implements IntStack, IntList {
 
     @Override
     public void add(int i) {
-
+        push(i);
     }
 
     @Override
     public void insert(int index, int value) {
-
+        System.arraycopy(intArray, index, intArray, index + 1,
+                top - index);
+        intArray[index] = value;
+        top++;
     }
 
     @Override
     public void set(int index, int value) {
-
+        intArray[index] = value;
     }
 
     @Override
     public int size() {
-        return 0;
+        return top;
     }
 
     @Override
     public int capacity() {
-        return 0;
+        return intArray.length;
     }
 
     @Override
@@ -38,32 +41,54 @@ public class ListImpl implements IntStack, IntList {
 
     @Override
     public Integer getIndexByValue(int value) {
+        for (int i = 0; i < intArray.length; i++) {
+            if (intArray[i] == value) {
+                return i;
+            }
+        }
         return null;
     }
 
     @Override
     public boolean contains(int value) {
-        return false;
+        return getIndexByValue(value) != null;
     }
 
     @Override
     public void removeValue(int value) {
-
+        while (contains(value)) {
+            int index = getIndexByValue(value);
+            System.arraycopy(intArray, index + 1, intArray, index,
+                    top - index - 1);
+            intArray[--top] = 0;
+        }
     }
 
     @Override
     public void removeByIndex(int index) {
-
+        if (index <= intArray.length) {
+            System.arraycopy(intArray, index + 1, intArray, index,
+                    top - index - 1);
+            intArray[--top] = 0;
+        } else {
+            System.out.println("Index out of bounds!");
+        }
     }
 
     @Override
     public IntList subList(int fromIndex, int toIndex) {
-        return null;
+        IntList newIntList = new ListImpl();
+        int[] newList = new int[toIndex - fromIndex];
+        System.arraycopy(intArray, fromIndex, newList, 0, toIndex - fromIndex);
+        for (int i : newList) {
+            newIntList.add(i);
+        }
+        return newIntList;
     }
 
     @Override
     public int[] toArray() {
-        return new int[0];
+        return intArray;
     }
 
     @Override
@@ -71,14 +96,14 @@ public class ListImpl implements IntStack, IntList {
         if (top < 0) {
             intArray[++top] = value;
             top++;
+            return;
         }
         if (top >= intArray.length - 1) {
             int newLength = (intArray.length * 3 / 2) + 1;
             intArray = Arrays.copyOf(intArray, newLength);
-        } else {
-            intArray[top] = value;
-            top++;
         }
+        intArray[top] = value;
+        top++;
     }
 
     @Override
