@@ -1,9 +1,6 @@
 package com.my_company.task8;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class AnyClass {
 
@@ -24,5 +21,22 @@ public class AnyClass {
             }
         }
         return strings1;
+    }
+
+    public List<String> getUniqueBySet(List<String> strings) {
+        return new ArrayList<>(new HashSet<>(strings));
+    }
+
+    public List<String> getUnique(List<String> strings) {
+        List<String> stringList = new ArrayList<>();
+        for (String s : strings) {
+            if (stringList.isEmpty()) {
+                stringList.add(s);
+            }
+            if (!stringList.contains(s)) {
+                stringList.add(s);
+            }
+        }
+        return stringList;
     }
 }
