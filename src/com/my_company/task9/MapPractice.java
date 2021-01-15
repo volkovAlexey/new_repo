@@ -27,10 +27,7 @@ public class MapPractice {
                 map.put(temp, 1);
             }
         }
-        List<Integer> integers = new ArrayList<>();
-        for (Map.Entry<String, Integer> temp : map.entrySet()) {
-            integers.add(temp.getValue());
-        }
+        List<Integer> integers = new ArrayList<>(map.values());
         Collections.sort(integers);
 
         List<Integer> subList = new ArrayList<>();
