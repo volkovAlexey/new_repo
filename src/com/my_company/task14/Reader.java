@@ -13,11 +13,11 @@ public class Reader implements Runnable {
 
     @Override
     public void run() {
-        Iterator<Integer> iterator = list.iterator();
         while (true) {
             try {
                 Thread.sleep(1_000);
                 if (!list.isEmpty()) {
+                    Iterator<Integer> iterator = list.iterator();
                     while (iterator.hasNext()) {
                         System.out.println(iterator.next());
                         iterator.remove();
