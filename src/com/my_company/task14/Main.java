@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class Main {
+    protected static volatile List<Integer> integers = Collections.synchronizedList(new ArrayList<>());
+
     public static void main(String[] args) {
-        List<Integer> integers = Collections.synchronizedList(new ArrayList<>());
+
         Writer writer = new Writer(integers);
         Reader reader = new Reader(integers);
 

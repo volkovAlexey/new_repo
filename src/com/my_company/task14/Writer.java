@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Writer implements Runnable {
-    private volatile List<Integer> list;
+    private List<Integer> list;
 
     Writer(List<Integer> list) {
         this.list = list;
@@ -13,10 +13,10 @@ public class Writer implements Runnable {
     @Override
     public void run() {
         Random random = new Random();
-        while (Thread.currentThread().isAlive()) {
+        while (true) {
             try {
                 Thread.sleep(2_500);
-                list.add(random.nextInt());
+                    list.add(random.nextInt());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

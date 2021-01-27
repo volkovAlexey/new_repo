@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Reader implements Runnable {
-    private volatile List<Integer> list;
+    private List<Integer> list;
 
     Reader(List<Integer> list) {
         this.list = list;
@@ -13,23 +13,21 @@ public class Reader implements Runnable {
 
     @Override
     public void run() {
-        synchronized (list) {
-            Iterator iterator = list.iterator();
-            while (Thread.currentThread().isAlive()) {
-                try {
-                    Thread.sleep(1_000);
-                    if (!list.isEmpty()) {
-                        while (iterator.hasNext()) {
-                            System.out.println(iterator.next());
-                            iterator.remove();
-                        }
-                    } else {
-                        LocalDate date = LocalDate.now();
-                        System.out.println(date + " - The list is empty");
+        Iterator<Integer> iterator = list.iterator();
+        while (true) {
+            try {
+                Thread.sleep(1_000);
+                if (!list.isEmpty()) {
+                    while (iterator.hasNext()) {
+                        System.out.println(iterator.next());
+                        iterator.remove();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } else {
+                    LocalDate date = LocalDate.now();
+                    System.out.println(date + " - The list is empty");
                 }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
